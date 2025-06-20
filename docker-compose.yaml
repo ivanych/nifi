@@ -1,0 +1,13 @@
+version: "2"
+
+services:
+  nifi:
+    image: apache/nifi:latest
+    ports:
+      - "8000:8000"
+      - "8443:8443"
+    environment:
+      SINGLE_USER_CREDENTIALS_USERNAME: ${SINGLE_USER_CREDENTIALS_USERNAME}
+      SINGLE_USER_CREDENTIALS_PASSWORD: ${SINGLE_USER_CREDENTIALS_PASSWORD}
+    #volumes:
+    #  - ./nifi_data:/opt/nifi/nifi-current
