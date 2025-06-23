@@ -4,9 +4,7 @@ services:
   nifi:
     image: apache/nifi:latest
     ports:
-      - "8443:8443"
+      - ${HOST_NIFI_WEB_HTTPS_PORT}:${CONTAINER_NIFI_WEB_HTTPS_PORT}
     environment:
       SINGLE_USER_CREDENTIALS_USERNAME: ${SINGLE_USER_CREDENTIALS_USERNAME}
       SINGLE_USER_CREDENTIALS_PASSWORD: ${SINGLE_USER_CREDENTIALS_PASSWORD}
-    #volumes:
-    #  - ./nifi_data:/opt/nifi/nifi-current
