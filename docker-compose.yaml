@@ -5,6 +5,16 @@ services:
     image: apache/nifi:latest
     ports:
       - ${HOST_NIFI_WEB_HTTPS_PORT}:${CONTAINER_NIFI_WEB_HTTPS_PORT}
+    volumes:
+      - ./.volumes/nifi/data:/var/data
+      - ./extensions:/opt/nifi/nifi-current/extensions
     environment:
       SINGLE_USER_CREDENTIALS_USERNAME: ${SINGLE_USER_CREDENTIALS_USERNAME}
       SINGLE_USER_CREDENTIALS_PASSWORD: ${SINGLE_USER_CREDENTIALS_PASSWORD}
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./.volumes/postgres/data:/var/lib/postgresql/data
